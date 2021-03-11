@@ -12,7 +12,7 @@ jobs:
     name: Test
     strategy:
       matrix:
-        go-version: [1.9.x, 1.10.x, 1.11.x, 1.12.x, 1.13.x, 1.14.x, 1.15.x]
+        go-version: [1.9.x, 1.10.x, 1.11.x, 1.12.x, 1.13.x, 1.14.x, 1.15.x, 1.16.x]
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     env:
@@ -41,12 +41,12 @@ jobs:
 
     - name: Test
       run: go test ./...
-      
+
     - name: Get Coverage Report
       run: |
         go test -c -covermode=count -coverpkg=github.com/cweill/gotests,github.com/cweill/gotests/internal/input,github.com/cweill/gotests/internal/render,github.com/cweill/gotests/internal/goparser,github.com/cweill/gotests/internal/output,github.com/cweill/gotests/internal/models
         ./gotests.test -test.coverprofile coverage.cov
-        
+
     - name: Send Coverage Report
       run: $GOPATH/bin/goveralls -coverprofile=coverage.cov -service=github
       env:

@@ -1,5 +1,8 @@
 module github.com/cweill/gotests
 
-require golang.org/x/tools v0.0.0-20191109212701-97ad0ed33101
+require (
+	github.com/mattn/goveralls v0.0.8 // indirect
+	golang.org/x/tools v0.1.0
+)
 
 go 1.6
