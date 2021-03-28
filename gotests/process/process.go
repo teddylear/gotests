@@ -14,6 +14,8 @@ import (
 	"github.com/cweill/gotests"
 )
 
+var GitCommit string
+
 const newFilePerm os.FileMode = 0644
 const versionNumber = "v1.6.1"
 
@@ -61,7 +63,7 @@ func Run(out io.Writer, args []string, opts *Options) {
 }
 
 func versionMessage() string {
-	return fmt.Sprintf("gotests version %s", versionNumber)
+	return fmt.Sprintf("gotests version %s, commit: %s", versionNumber, GitCommit)
 }
 
 func parseOptions(out io.Writer, opt *Options) *gotests.Options {
